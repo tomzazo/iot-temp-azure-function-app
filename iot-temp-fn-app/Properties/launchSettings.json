@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "iot_temp_fn_app": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7293",
+      "launchBrowser": false
+    }
+  }
+}
