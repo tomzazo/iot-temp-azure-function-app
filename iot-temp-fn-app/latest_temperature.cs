@@ -28,7 +28,8 @@ namespace iot_temp_fn_app
 
             foreach (TemperatureTelemetry t in tempModels)
             {
-                TemperatureTelemetryModel tm = new TemperatureTelemetryModel() {
+                TemperatureTelemetryModel tm = new TemperatureTelemetryModel()
+                {
                     Id = t.Id,
                     PartitionKey = t.PartitionKey,
                 };

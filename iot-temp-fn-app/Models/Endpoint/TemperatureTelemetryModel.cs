@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace iot_temp_fn_app 
+namespace iot_temp_fn_app
 {
     public class TemperatureTelemetryModel
     {
