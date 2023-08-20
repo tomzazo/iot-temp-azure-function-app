@@ -1,5 +1,3 @@
-using System.IO;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
@@ -15,14 +13,14 @@ namespace iot_temp_fn_app
     {
         [FunctionName("latest_temperature")]
         public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
-            [CosmosDB(
+           [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+           [CosmosDB(
                 databaseName:"temptelemetry",
                 containerName:"temptelemetry",
                 Connection = "CosmosDbConnectionString",
                 SqlQuery = "SELECT TOP 1 * FROM temptelemetry t ORDER BY t._ts DESC"
             )]IEnumerable<TemperatureTelemetry> tempModels,
-            ILogger log)
+           ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
