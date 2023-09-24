@@ -1,9 +1,9 @@
 name: Terraform test
-on: [push]
+on: push
 jobs:
   terraform-validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: hashicorp/setup-terraform@v2
       - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v2
       - run: make test/infra
