@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
@@ -5,24 +8,25 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System;
 
 namespace iot_temp_fn_app
 {
-    public static class latest_temperature
+    public static class history
     {
-        [FunctionName("latest_temperature")]
+        [FunctionName("history")]
         public static IActionResult Run(
-           [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
            [CosmosDB(
                 databaseName:"temptelemetry",
                 containerName:"temptelemetry",
                 Connection = "CosmosDbConnectionString",
-                SqlQuery = "SELECT TOP 1 * FROM temptelemetry t ORDER BY t._ts DESC"
+                SqlQuery = "SELECT * FROM temptelemetry t WHERE timestampToDateTime(t._ts*1000) >= dateTimeAdd(\"dd\", -1, getCurrentDateTime()) ORDER BY t._ts DESC"
             )]IEnumerable<TemperatureTelemetry> tempModels,
            ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
+
+            List<TemperatureTelemetryModel> ttm = new List<TemperatureTelemetryModel>();
 
             foreach (TemperatureTelemetry t in tempModels)
             {
@@ -37,10 +41,10 @@ namespace iot_temp_fn_app
 
                 tm.Timestamp = DateTimeOffset.FromUnixTimeSeconds(t.Timestamp).UtcDateTime;
 
-                return new OkObjectResult(JsonConvert.SerializeObject(tm));
+                ttm.Add(tm);
             }
 
-            return new BadRequestObjectResult("Error fetching data from DB.");
+            return new OkObjectResult(JsonConvert.SerializeObject(ttm));
         }
     }
 }
