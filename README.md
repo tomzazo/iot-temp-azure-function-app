@@ -1,4 +1,4 @@
-## Temperature telemetry Azure function example
+## Temperature telemetry Azure function app
 
 An example of an Azure function app which reads data from CosmosDB containing temperature readings.
 
