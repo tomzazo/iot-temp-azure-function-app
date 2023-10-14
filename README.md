@@ -2,6 +2,8 @@
 
 An example of an Azure function app which reads data from CosmosDB containing temperature readings.
 
+**Note:** This is a continuation of the [Azure IoT Hub temperature telemetry project](https://github.com/tomazzazijal/azure-mqtt-temperature-telemetry).
+
 ### Pre-requisites
 
 - Terraform
