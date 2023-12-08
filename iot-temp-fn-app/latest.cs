@@ -13,7 +13,7 @@ namespace iot_temp_fn_app
     {
         [FunctionName("latest")]
         public static IActionResult Run(
-           [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+           [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
            [CosmosDB(
                 databaseName:"temptelemetry",
                 containerName:"temptelemetry",
