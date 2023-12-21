@@ -22,15 +22,9 @@ namespace iot_temp_fn_app
             )]IEnumerable<TemperatureTelemetry> tempModels,
            ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
             foreach (TemperatureTelemetry t in tempModels)
             {
-                TemperatureTelemetryModel tm = new TemperatureTelemetryModel()
-                {
-                    Id = t.Id,
-                    PartitionKey = t.PartitionKey,
-                };
+                TemperatureTelemetryModel tm = new TemperatureTelemetryModel();
 
                 byte[] data = Convert.FromBase64String(t.Body);
                 tm.Temperature = System.Text.Encoding.UTF8.GetString(data);

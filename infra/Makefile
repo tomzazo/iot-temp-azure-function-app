@@ -1,4 +1,5 @@
-.PHONY: deploy
+.PHONY: init test deploy
+.SILENT: init test deploy
 
 init:
 	terraform init

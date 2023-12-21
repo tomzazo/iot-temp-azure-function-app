@@ -20,3 +20,7 @@ Two endpoints are exposed from the function app:
 
 - `/api/latest` which returns the latest recorded temperature reading
 - `/api/history` which returns recorded temperature readings for the past 24 hours
+
+### Disclaimer
+
+This project serves as an environment for learning technologies and concepts. May not follow best practice.

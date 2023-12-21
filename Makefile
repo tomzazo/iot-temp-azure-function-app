@@ -1,4 +1,5 @@
-.PHONY: deploy/infra deploy/fn
+.PHONY: test/infra build/fn deploy/infra deploy/fn
+.SILENT: test/infra build/fn deploy/infra deploy/fn
 
 test/infra:
 	$(MAKE) -C infra test

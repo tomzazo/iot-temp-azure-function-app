@@ -1,4 +1,5 @@
-.PHONY: publish
+.PHONY: build publish
+.SILENT: build publish
 
 build:
 	dotnet build
