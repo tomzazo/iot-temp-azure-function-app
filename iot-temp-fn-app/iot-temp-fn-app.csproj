@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.39" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.CosmosDB" Version="4.7.0" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.3.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.4.1" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
