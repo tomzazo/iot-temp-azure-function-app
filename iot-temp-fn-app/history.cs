@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace iot_temp_fn_app
 {
-    public static class history
+    public static class History
     {
         // Manual subtraction of 24 hours from current timestamp instead of using built-in functions due to performance gains.
         //

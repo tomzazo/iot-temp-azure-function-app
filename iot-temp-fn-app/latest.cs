@@ -9,7 +9,7 @@ using System;
 
 namespace iot_temp_fn_app
 {
-    public static class latest
+    public static class Latest
     {
         [FunctionName("latest")]
         public static IActionResult Run(
